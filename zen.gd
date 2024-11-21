@@ -30,7 +30,7 @@ func on_timer_timeout():
 			lerped_x = lerp(weighted_randf_range(-x_min, x_min), weighted_randf_range(-x_max,x_max), lerp_factor)
 		
 		var rand_vector: Vector3 = Vector3(lerped_x,-25,rand_z)
-		print(rand_vector)
+		#print(rand_vector)
 		var bubble = load("res://bubble.tscn").instantiate()
 		get_tree().get_current_scene().add_child(bubble)
 		bubble.global_position = rand_vector

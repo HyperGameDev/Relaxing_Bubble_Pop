@@ -1,14 +1,5 @@
 res://ZEN.tscn
-res://bubble.tscn
 res://sound.tscn
-res://zen.gd
-res://bubble_scene.tscn
+res://bubble.tscn
 res://bubble.gd
-res://bubble_scene.gd
-res://waterline.gd
-res://Messenger.gd
-res://camera_3d.gd
-res://globals.gd
-res://upperatmos.gd
-res://default_bus_layout.tres
-res://hacky_load.gd
+res://zen.gd
