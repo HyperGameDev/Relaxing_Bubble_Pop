@@ -12,8 +12,7 @@ func on_pop():
 
 func on_sees_something(something):
 	if self == something:
-		if Input.is_action_pressed("Grab"):
-			if !popped:
-				$AudioStreamPlayer3D.play()
-				popped = true
-			visible = false
+		if !popped:
+			$AudioStreamPlayer3D.play()
+			popped = true
+		visible = false

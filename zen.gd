@@ -9,6 +9,6 @@ func on_timer_timeout():
 	var bubble = load("res://bubble.tscn").instantiate()
 	get_tree().get_current_scene().add_child(bubble)
 	bubble.global_position = rand_vector
-	var rand_time: float = randf_range(0.0,1.0)
+	var rand_time: float = randf_range(0.0,0.5)
 	timer.start(rand_time)
 	print(rand_time)
