@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2smvqdmp5re7"]
+
+[ext_resource type="Script" path="res://zen.gd" id="1"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://difevvvb7luvu" path="res://ocean.wav" id="3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vprnn"]
+sky_top_color = Color(0, 0.0525302, 0.186245, 1)
+sky_horizon_color = Color(0.4424, 0.47376, 0.56, 1)
+sky_energy_multiplier = 1.55
+ground_bottom_color = Color(0.402246, 0.632163, 0.779533, 1)
+ground_horizon_color = Color(1, 0.917667, 0.74, 1)
+
+[sub_resource type="Sky" id="Sky_uwauc"]
+sky_material = SubResource("ProceduralSkyMaterial_vprnn")
+
+[sub_resource type="Environment" id="Environment_7dg58"]
+background_mode = 2
+sky = SubResource("Sky_uwauc")
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5f2v3"]
+size = Vector3(100, 1, 100)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.62388, 0.657658, 0.422209, 0, 0.54024, -0.841511, -0.78152, -0.525001, -0.337045, 0, 0, 0)
+light_color = Color(0.270588, 0.8, 1, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7dg58")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.34678e-08, -0.954761, -0.297375, -2.59973e-08, -0.297375, 0.954761, 0, -2.01, 7.986)
+script = ExtResource("2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_5f2v3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3")
+volume_db = -10.0
+autoplay = true
