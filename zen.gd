@@ -42,6 +42,6 @@ func on_timer_timeout():
 		timer.start(rand_time)
 
 func weighted_randf_range(min_val: float, max_val: float) -> float:
-	var sign = 1 if randf() > 0.5 else -1 # randomly choose between positive and negative
+	var polarity = 1 if randf() > 0.5 else -1 # randomly choose between positive and negative
 	var weight = pow(randf(), 5) # Adjust the exponent to change the weight
-	return sign * (weight * (max_val - min_val) + min_val)
+	return polarity * (weight * (max_val - min_val) + min_val)

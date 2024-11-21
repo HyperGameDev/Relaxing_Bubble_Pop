@@ -137,6 +137,7 @@ animation = NodePath("AnimationPlayer")
 shape = SubResource("BoxShape3D_5f2v3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Waterline"]
+visible = false
 mesh = SubResource("BoxMesh_ikken")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Waterline"]

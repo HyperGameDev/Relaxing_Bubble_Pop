@@ -13,6 +13,7 @@ config_version=5
 config/name="H1H_Zen"
 run/main_scene="res://ZEN.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://gamebg.png"
 config/icon="res://icon.svg"
 
 [autoload]

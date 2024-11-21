@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://db7l1t2is18ka"]
+[gd_scene load_steps=9 format=3 uid="uid://db7l1t2is18ka"]
 
 [ext_resource type="Script" path="res://bubble.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://bh4usiwyl065b" path="res://bubble.wav" id="2"]
+[ext_resource type="Material" uid="uid://cbqrjjpnstfod" path="res://bubble.tres" id="2_7rpqs"]
 [ext_resource type="PackedScene" uid="uid://bjpd22s3jktcl" path="res://particles_blast.tscn" id="3_870d0"]
 [ext_resource type="PackedScene" uid="uid://crem5axttkk1j" path="res://particles_pop.tscn" id="4_wvjvh"]
 
@@ -9,20 +10,6 @@
 friction = 0.25
 
 [sub_resource type="SphereMesh" id="SphereMesh_iu6uw"]
-
-[sub_resource type="Gradient" id="Gradient_pr22v"]
-offsets = PackedFloat32Array(0.415162, 1)
-colors = PackedColorArray(0, 0, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nkedn"]
-gradient = SubResource("Gradient_pr22v")
-fill = 1
-fill_from = Vector2(0.435897, 0.41453)
-fill_to = Vector2(0.739316, 0.226496)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdcg8"]
-albedo_texture = SubResource("GradientTexture2D_nkedn")
-uv1_triplanar = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k1ena"]
 
@@ -39,7 +26,7 @@ bubble_blast = NodePath("Particles_Blast")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_iu6uw")
-surface_material_override/0 = SubResource("StandardMaterial3D_gdcg8")
+surface_material_override/0 = ExtResource("2_7rpqs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_k1ena")
