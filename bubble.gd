@@ -3,6 +3,7 @@ extends RigidBody3D
 @export var bubble_mesh: MeshInstance3D
 @export var bubble_blast: GPUParticles3D
 var popped: bool = false
+var hacky: bool = false
 
 func _ready()->void :
 	Messenger.sees_something.connect(on_sees_something)
@@ -21,12 +22,14 @@ func on_sees_something(something):
 	if self == something:
 		if !popped:
 			$Particles_Pop.emitting = true
-			$AudioStreamPlayer3D.play()
+			if !hacky:
+				$AudioStreamPlayer3D.play()
 			popped = true
 		bubble_mesh.visible = false
 		
 func blast_bubble():
-	bubble_mesh.visible = false
-	bubble_blast.emitting = true
-	await get_tree().create_timer(bubble_blast.lifetime).timeout
-	queue_free()
+	if !hacky:
+		bubble_mesh.visible = false
+		bubble_blast.emitting = true
+		await get_tree().create_timer(bubble_blast.lifetime).timeout
+		queue_free()

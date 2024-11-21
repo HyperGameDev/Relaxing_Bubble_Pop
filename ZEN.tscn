@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2smvqdmp5re7"]
+[gd_scene load_steps=22 format=3 uid="uid://d2smvqdmp5re7"]
 
 [ext_resource type="Script" path="res://zen.gd" id="1"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="2"]
@@ -99,10 +99,10 @@ size = Vector3(200, 1, 300)
 [sub_resource type="BoxMesh" id="BoxMesh_6deaf"]
 size = Vector3(200, 1, 300)
 
+[sub_resource type="BoxMesh" id="BoxMesh_31cii"]
+
 [node name="ZEN" type="Node3D"]
 script = ExtResource("1")
-spawn_rate_maximum = 0.2
-spawn_outer_x_limits = 21.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, -1.52855e-14, -8.74228e-08, 0, 1, -1.74846e-07, 8.74228e-08, -1.74846e-07, -1, 0, 0, 0)
@@ -174,12 +174,17 @@ shape = SubResource("BoxShape3D_hxt5m")
 visible = false
 mesh = SubResource("BoxMesh_6deaf")
 
-[node name="HackyLoad" type="Node3D" parent="." node_paths=PackedStringArray("particles_blast", "particles_pop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.908, 15.344)
+[node name="HackyLoad" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -99.0275, -128.586)
 script = ExtResource("6_ip3m3")
-particles_blast = NodePath("Particles_Blast")
-particles_pop = NodePath("Particles_Pop")
 
 [node name="Particles_Blast" parent="HackyLoad" instance=ExtResource("6_ivt3r")]
 
 [node name="Particles_Pop" parent="HackyLoad" instance=ExtResource("7_ypmkk")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HackyLoad"]
+visible = false
+mesh = SubResource("BoxMesh_31cii")
+
+[editable path="HackyLoad/Particles_Blast"]
+[editable path="HackyLoad/Particles_Pop"]
