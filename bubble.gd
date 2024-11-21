@@ -11,7 +11,7 @@ func _ready()->void :
 	#body_entered.connect(on_body_entered)
 	
 func _physics_process(delta: float) -> void:
-	if global_position.y >= 80:
+	if global_position.y >= 40:
 		blast_bubble()
 
 func on_pop():

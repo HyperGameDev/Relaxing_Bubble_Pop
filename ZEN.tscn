@@ -103,7 +103,6 @@ size = Vector3(200, 1, 300)
 
 [node name="ZEN" type="Node3D"]
 script = ExtResource("1")
-bubble_speed = 20.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, -1.52855e-14, -8.74228e-08, 0, 1, -1.74846e-07, 8.74228e-08, -1.74846e-07, -1, 0, 0, 0)
