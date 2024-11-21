@@ -2,6 +2,10 @@ extends Node3D
 @export var stop_spawning: bool = false
 @export_range(.1,3.0) var spawn_rate_maximum: float = 1.45
 @export_range(0.0,20.0) var bubble_speed: float = 0.0
+@export var spawn_outer_x_limits: float = 25
+@export var spawn_inner_x_limits: float = 10
+@export var spawn_outer_z_limits: float = 15
+@export var spawn_inner_z_limits: float = 0
 
 @onready var timer: Timer = $Timer
 
@@ -10,7 +14,23 @@ func _ready()->void :
 
 func on_timer_timeout():
 	if !stop_spawning:
-		var rand_vector: Vector3 = Vector3(randf_range(-20.0, 20.0), -25.0, randf_range(-15.0, 15.0))
+		var x_max = spawn_outer_x_limits
+		var x_min = spawn_inner_x_limits
+		var z_max = spawn_outer_z_limits
+		var z_min = spawn_inner_z_limits
+		var z_max_normalized = z_max/2
+		var rand_z: float = randf_range(-z_max,z_min)
+		var lerped_x: float
+		
+		if rand_z <= -7.5:
+			var lerp_factor = (rand_z + z_max) / z_max_normalized
+			lerped_x = lerp(weighted_randf_range(-x_max, x_max), weighted_randf_range(-x_min,x_min), lerp_factor)
+		else:
+			var lerp_factor = -rand_z / z_max_normalized
+			lerped_x = lerp(weighted_randf_range(-x_min, x_min), weighted_randf_range(-x_max,x_max), lerp_factor)
+		
+		var rand_vector: Vector3 = Vector3(lerped_x,-25,rand_z)
+		print(rand_vector)
 		var bubble = load("res://bubble.tscn").instantiate()
 		get_tree().get_current_scene().add_child(bubble)
 		bubble.global_position = rand_vector
@@ -20,3 +40,8 @@ func on_timer_timeout():
 		#print(bubble.constant_force.x)
 		var rand_time: float = randf_range(0.0,spawn_rate_maximum)
 		timer.start(rand_time)
+
+func weighted_randf_range(min_val: float, max_val: float) -> float:
+	var sign = 1 if randf() > 0.5 else -1 # randomly choose between positive and negative
+	var weight = pow(randf(), 5) # Adjust the exponent to change the weight
+	return sign * (weight * (max_val - min_val) + min_val)

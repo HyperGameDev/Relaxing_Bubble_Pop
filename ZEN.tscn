@@ -101,6 +101,8 @@ size = Vector3(200, 1, 300)
 
 [node name="ZEN" type="Node3D"]
 script = ExtResource("1")
+spawn_rate_maximum = 0.2
+spawn_outer_x_limits = 21.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, -1.52855e-14, -8.74228e-08, 0, 1, -1.74846e-07, 8.74228e-08, -1.74846e-07, -1, 0, 0, 0)
@@ -173,7 +175,7 @@ visible = false
 mesh = SubResource("BoxMesh_6deaf")
 
 [node name="HackyLoad" type="Node3D" parent="." node_paths=PackedStringArray("particles_blast", "particles_pop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.90797, 11.849)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.908, 15.344)
 script = ExtResource("6_ip3m3")
 particles_blast = NodePath("Particles_Blast")
 particles_pop = NodePath("Particles_Pop")
