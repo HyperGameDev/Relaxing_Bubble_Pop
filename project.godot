@@ -18,9 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 Messenger="*res://Messenger.gd"
+Globals="*res://globals.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/always_on_top=true
 
 [input]

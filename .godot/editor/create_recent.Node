@@ -1,1 +1,10 @@
+Node3D
+GPUParticles3D
+StaticBody3D
+MeshInstance3D
+CollisionShape3D
+Area3D
+OmniLight3D
+AnimationPlayer
+AnimationTree
 Node

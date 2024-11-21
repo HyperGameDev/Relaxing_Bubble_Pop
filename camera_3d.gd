@@ -1,5 +1,7 @@
 extends Camera3D
 
+@export var waterline: StaticBody3D
+
 @onready var window_size: Vector2 = get_window().size
 @onready var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 
@@ -16,7 +18,7 @@ func hover_ray(mask, has_mask):
 	var to = from + project_ray_normal(mouse_pos) * ray_length
 	var space = get_world_3d().direct_space_state
 	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.exclude = [$"../StaticBody3D"]
+	ray_query.exclude = [waterline]
 	ray_query.from = from
 	ray_query.to = to
 

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1xxmoyxplg4s"]
+
+[ext_resource type="Script" path="res://bubble_scene.gd" id="1_dqmrg"]
+[ext_resource type="PackedScene" uid="uid://db7l1t2is18ka" path="res://bubble.tscn" id="1_ucw0n"]
+
+[node name="Bubble_Scene" type="Node3D"]
+script = ExtResource("1_dqmrg")
+
+[node name="Bubble" parent="." instance=ExtResource("1_ucw0n")]
