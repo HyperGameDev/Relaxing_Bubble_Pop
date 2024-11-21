@@ -21,8 +21,10 @@ size = Vector3(-0.085, 0.71, 1.14)
 
 [node name="Particles_Blast" type="GPUParticles3D"]
 cast_shadow = 0
+emitting = false
 amount = 7
 lifetime = 5.0
+one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_2sdif")
