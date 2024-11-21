@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjpd22s3jktcl"]
+[gd_scene load_steps=4 format=3 uid="uid://bjpd22s3jktcl"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2sdif"]
 particle_flag_rotate_y = true
@@ -8,12 +8,6 @@ initial_velocity_max = 10.73
 angular_velocity_min = -720.0
 angular_velocity_max = 720.0
 
-[sub_resource type="Curve" id="Curve_xrqmy"]
-min_value = -36.25
-max_value = 24.05
-_data = [Vector2(0.0818182, -5.19499), 0.0, 363.041, 0, 0, Vector2(0.231818, 1.09605), 0.0, -281.73, 0, 0, Vector2(0.411364, 1.7232), -122.893, -122.893, 0, 0, Vector2(0.684091, 1.811), 28.8207, 28.8207, 0, 0, Vector2(0.852273, 0.958083), 124.173, 0.0, 0, 0]
-point_count = 5
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_666wl"]
 blend_mode = 3
 albedo_color = Color(1, 0.403922, 0, 1)
@@ -21,20 +15,15 @@ metallic = 1.0
 metallic_specular = 1.0
 roughness = 0.5
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_8i81r"]
+[sub_resource type="BoxMesh" id="BoxMesh_h43cr"]
 material = SubResource("StandardMaterial3D_666wl")
-size = 1.415
-sections = 3
-section_length = 0.68
-curve = SubResource("Curve_xrqmy")
+size = Vector3(-0.085, 0.71, 1.14)
 
 [node name="Particles_Blast" type="GPUParticles3D"]
 cast_shadow = 0
-emitting = false
 amount = 7
 lifetime = 5.0
-one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_2sdif")
-draw_pass_1 = SubResource("RibbonTrailMesh_8i81r")
+draw_pass_1 = SubResource("BoxMesh_h43cr")
