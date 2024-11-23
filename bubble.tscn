@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bh4usiwyl065b" path="res://bubble.wav" id="2"]
 [ext_resource type="Material" uid="uid://cbqrjjpnstfod" path="res://bubble.tres" id="2_7rpqs"]
 [ext_resource type="PackedScene" uid="uid://bjpd22s3jktcl" path="res://particles_blast.tscn" id="3_870d0"]
+[ext_resource type="Shape3D" uid="uid://7i5bbgf6dd21" path="res://bubble_collision.tres" id="3_wt7uc"]
 [ext_resource type="PackedScene" uid="uid://crem5axttkk1j" path="res://particles_pop.tscn" id="4_wvjvh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwbxw"]
@@ -13,8 +14,20 @@ friction = 0.25
 radius = 0.7
 height = 1.4
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_k1ena"]
-radius = 0.7
+[sub_resource type="Animation" id="Animation_3cxl1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:constant_force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_vmj14"]
 resource_name = "float"
@@ -31,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector3(0, 0, 0), Vector3(0, -10, 0), Vector3(0, -7.5, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_3cxl1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:constant_force")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tap1n"]
@@ -71,7 +69,7 @@ mesh = SubResource("SphereMesh_iu6uw")
 surface_material_override/0 = ExtResource("2_7rpqs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_k1ena")
+shape = ExtResource("3_wt7uc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2")

@@ -43,9 +43,12 @@ func on_sees_something(something):
 				Messenger.update_bubbles_left.emit(-1)
 				Sound.audio_pop.play()
 			popped = true
+			var food = load("res://bubble_food.tscn").instantiate()
+			get_tree().get_current_scene().add_child(food)
+			food.global_position = global_position + Vector3(.0,2.,.0)
+			bubble_mesh.visible = false
 			await get_tree().create_timer($Particles_Pop.lifetime).timeout
 			queue_free()
-		bubble_mesh.visible = false
 		
 func blast_bubble():
 	if !hacky:
