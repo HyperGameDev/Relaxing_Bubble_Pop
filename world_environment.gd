@@ -1,5 +1,6 @@
 extends WorldEnvironment
 
+
 var dark_mode: bool = false
 @onready var directional_light_1: DirectionalLight3D = %DirectionalLight3D
 

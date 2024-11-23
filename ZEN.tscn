@@ -37,7 +37,7 @@ fill_from = Vector2(0, 0.145299)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vprnn"]
 sky_top_color = Color(0.403922, 0.631373, 0.780392, 1)
-sky_horizon_color = Color(1, 0.917647, 0.741176, 1)
+sky_horizon_color = Color(1, 0.74, 0.904667, 1)
 sky_curve = 0.0652914
 ground_bottom_color = Color(0, 0.0509804, 0.184314, 1)
 ground_horizon_color = Color(0.443137, 0.47451, 0.560784, 1)
@@ -80,13 +80,24 @@ adjustment_color_correction = SubResource("GradientTexture2D_0sehy")
 size = Vector3(200, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ikken"]
-size = Vector3(200, 1, 90)
+flip_faces = true
+size = Vector3(200, -0.635, 95.355)
 
 [sub_resource type="Gradient" id="Gradient_w8qet"]
+colors = PackedColorArray(0.790454, 0.182294, 0.214721, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t5nc6"]
+noise_type = 2
+frequency = 0.0875
+fractal_type = 3
+fractal_lacunarity = 4.01
+cellular_distance_function = 3
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_amplitude = 2.505
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uv12l"]
+as_normal_map = true
 color_ramp = SubResource("Gradient_w8qet")
 noise = SubResource("FastNoiseLite_t5nc6")
 
@@ -98,6 +109,7 @@ offset = Vector3(0, 1000, 0)
 cellular_jitter = 0.3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0gq50"]
+in_3d_space = true
 generate_mipmaps = false
 seamless = true
 as_normal_map = true
@@ -111,23 +123,26 @@ blend_mode = 2
 cull_mode = 1
 diffuse_mode = 2
 specular_mode = 2
-albedo_color = Color(0.783187, 0.240571, 0, 1)
+albedo_color = Color(0.616013, 0.395654, 0.238012, 1)
 albedo_texture = SubResource("NoiseTexture2D_0gq50")
 metallic = 0.85
 metallic_specular = 0.0
 roughness = 0.7
 ao_light_affect = 1.0
 refraction_scale = -1.0
+disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0f1yq"]
 next_pass = SubResource("StandardMaterial3D_08qf6")
 blend_mode = 1
-cull_mode = 1
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(0.400698, 0.400698, 0.400698, 1)
 albedo_texture = SubResource("NoiseTexture2D_uv12l")
-metallic = 0.13
+metallic = 0.48
 metallic_specular = 0.0
-uv1_triplanar = true
+roughness = 0.85
+distance_fade_mode = 1
+distance_fade_min_distance = 76.01
+distance_fade_max_distance = 0.0
 
 [sub_resource type="Animation" id="Animation_h3s4m"]
 length = 0.001
