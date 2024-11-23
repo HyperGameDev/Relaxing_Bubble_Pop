@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://l1yfwxhbr8ps"]
+[gd_scene load_steps=3 format=3 uid="uid://l1yfwxhbr8ps"]
 
 [ext_resource type="Script" path="res://sound.gd" id="1_fi7s0"]
+[ext_resource type="AudioStream" uid="uid://bh4usiwyl065b" path="res://bubble.wav" id="2_aygmb"]
 
 [node name="Sound" type="Node"]
 script = ExtResource("1_fi7s0")
+
+[node name="Audio_pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_aygmb")
+volume_db = -10.0

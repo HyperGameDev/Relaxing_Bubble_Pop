@@ -13,6 +13,9 @@ func _ready()->void :
 	timer.timeout.connect(on_timer_timeout)
 
 func on_timer_timeout():
+	if Globals.bubbles_left < 300:
+			stop_spawning = false
+			
 	if !stop_spawning:
 		var x_max = spawn_outer_x_limits
 		var x_min = spawn_inner_x_limits
@@ -38,6 +41,10 @@ func on_timer_timeout():
 		bubble.constant_force.y = bubble_speed
 		bubble.constant_force.z = -bubble_speed
 		#print(bubble.constant_force.x)
+		
+		if Globals.bubbles_left >= 300:
+			stop_spawning = true
+		
 		var rand_time: float = randf_range(0.0,spawn_rate_maximum)
 		timer.start(rand_time)
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6uauru1bj1cw"]
+
+[ext_resource type="PackedScene" uid="uid://db7l1t2is18ka" path="res://bubble.tscn" id="1_63rck"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_182dp"]
+size = Vector2(1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_182dp")
+
+[node name="Bubble" parent="." instance=ExtResource("1_63rck")]
+visible = false
