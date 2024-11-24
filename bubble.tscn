@@ -53,7 +53,7 @@ _data = {
 "float": SubResource("Animation_vmj14")
 }
 
-[node name="Bubble" type="RigidBody3D" node_paths=PackedStringArray("bubble_blast", "mesh")]
+[node name="Bubble" type="RigidBody3D" node_paths=PackedStringArray("bubble_blast", "mesh_1")]
 physics_material_override = SubResource("PhysicsMaterial_jwbxw")
 gravity_scale = -0.95
 can_sleep = false
@@ -62,7 +62,7 @@ max_contacts_reported = 1
 linear_damp = 5.435
 script = ExtResource("1")
 bubble_blast = NodePath("Particles_Blast")
-mesh = NodePath("MeshInstance3D")
+mesh_1 = NodePath("MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_iu6uw")

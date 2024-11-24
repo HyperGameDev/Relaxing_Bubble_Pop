@@ -39,6 +39,9 @@ func on_update_bubbles_left(adjustment,was_popped):
 	#if OS.has_feature("debug"):
 		#print(bubbles_left)
 
+func update_float_force_values(float_force_array):
+	float_force_values = float_force_array.duplicate()
+
 func _on_SwitchTimer_timeout():
 	current_float_index = (current_float_index + 1) % float_force_values.size()
 	constant_y_float_force = float_force_values[current_float_index]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6uauru1bj1cw"]
+[gd_scene load_steps=7 format=3 uid="uid://c6uauru1bj1cw"]
 
+[ext_resource type="Script" path="res://bubble_food.gd" id="1_dba6b"]
 [ext_resource type="Material" uid="uid://b38cafcxgkkgn" path="res://bubble_food_overlay.tres" id="1_ub0rm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3tyyt"]
@@ -14,9 +15,15 @@ orientation = 2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qckkn"]
 
-[node name="Bubble_food" type="RigidBody3D"]
+[node name="Bubble_food" type="RigidBody3D" node_paths=PackedStringArray("mesh_1", "mesh_2", "mesh_3")]
 physics_material_override = SubResource("PhysicsMaterial_3tyyt")
 gravity_scale = -0.3
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_dba6b")
+mesh_1 = NodePath("MeshInstance3D")
+mesh_2 = NodePath("MeshInstance3D2")
+mesh_3 = NodePath("MeshInstance3D3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0549316, -0.00311279, -0.0947876)

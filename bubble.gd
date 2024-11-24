@@ -1,4 +1,5 @@
 extends Floater
+
 @export var bubble_blast: GPUParticles3D
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -11,6 +12,8 @@ var hacky: bool = false
 var blasted: bool = false
 
 func _ready()->void :
+	add_to_group("Bubble")
+	body_entered.connect(on_body_entered)
 	Messenger.sees_something.connect(on_sees_something)
 	Messenger.update_bubbles_left.emit(1,true)
 
@@ -20,7 +23,7 @@ func on_sees_something(something):
 			popped = true
 			var tween = get_tree().create_tween()
 			tween.set_ease(Tween.EASE_OUT)
-			tween.tween_property(mesh, "scale", Vector3(1.15,1.15,1.15), .1)
+			tween.tween_property(mesh_1, "scale", Vector3(1.15,1.15,1.15), .1)
 			await tween.finished
 			$Particles_Pop.emitting = true
 			if !hacky:
@@ -31,6 +34,6 @@ func on_sees_something(something):
 				get_tree().get_current_scene().add_child(food)
 				food.global_position = global_position # + Vector3(.0,2.,.0)
 				food.global_rotation.y = global_rotation.y
-			mesh.visible = false
+			mesh_1.visible = false
 			await get_tree().create_timer($Particles_Pop.lifetime).timeout
 			queue_free()
