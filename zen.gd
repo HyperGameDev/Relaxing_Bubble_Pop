@@ -2,6 +2,7 @@ extends Node3D
 @export var stop_spawning: bool = false
 @export_range(.1,3.0) var spawn_rate_maximum: float = 1.45
 @export_range(0.0,20.0) var bubble_speed: float = 0.0
+@export var bubble_spread_divisor: float = 23.0
 @export var spawn_outer_x_limits: float = 21
 @export var spawn_inner_x_limits: float = 10
 @export var spawn_outer_z_limits: float = 15
@@ -13,7 +14,7 @@ func _ready()->void :
 	timer.timeout.connect(on_timer_timeout)
 
 func on_timer_timeout():
-	if Globals.bubbles_left < 300:
+	if Globals.bubbles_spawned < 300:
 			stop_spawning = false
 			
 	if !stop_spawning:
@@ -37,7 +38,7 @@ func on_timer_timeout():
 		var bubble = load("res://bubble.tscn").instantiate()
 		get_tree().get_current_scene().add_child(bubble)
 		bubble.global_position = rand_vector
-		bubble.constant_force.x = rand_vector.x/23
+		bubble.constant_force.x = rand_vector.x/bubble_spread_divisor
 		bubble.constant_force.y = bubble_speed
 		bubble.constant_force.z = -bubble_speed
 		#print(bubble.constant_force.x)

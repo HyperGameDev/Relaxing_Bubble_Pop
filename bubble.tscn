@@ -9,6 +9,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jwbxw"]
 friction = 0.25
+bounce = 0.44
 
 [sub_resource type="SphereMesh" id="SphereMesh_iu6uw"]
 radius = 0.7
@@ -52,7 +53,7 @@ _data = {
 "float": SubResource("Animation_vmj14")
 }
 
-[node name="Bubble" type="RigidBody3D" node_paths=PackedStringArray("bubble_mesh", "bubble_blast")]
+[node name="Bubble" type="RigidBody3D" node_paths=PackedStringArray("mesh", "bubble_blast")]
 physics_material_override = SubResource("PhysicsMaterial_jwbxw")
 gravity_scale = -0.95
 can_sleep = false
@@ -60,7 +61,7 @@ contact_monitor = true
 max_contacts_reported = 1
 linear_damp = 5.435
 script = ExtResource("1")
-bubble_mesh = NodePath("MeshInstance3D")
+mesh = NodePath("MeshInstance3D")
 bubble_blast = NodePath("Particles_Blast")
 bubble_speed = 1.0
 

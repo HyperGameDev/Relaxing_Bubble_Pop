@@ -1,15 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6uauru1bj1cw"]
+[gd_scene load_steps=6 format=3 uid="uid://c6uauru1bj1cw"]
 
 [ext_resource type="Material" uid="uid://b38cafcxgkkgn" path="res://bubble_food_overlay.tres" id="1_ub0rm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3tyyt"]
+bounce = 0.37
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_357fx"]
 size = Vector3(1, 0.01, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_182dp"]
-size = Vector2(0.4, 0.4)
+size = Vector2(0.11, 0.175)
 orientation = 2
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_qckkn"]
+
 [node name="Bubble_food" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_3tyyt")
 gravity_scale = -0.3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -17,16 +23,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0549316, -0.00311279, -0.0
 shape = SubResource("BoxShape3D_357fx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.938613, 0, 0.344971, 0, 1, 0, -0.344971, 0, 0.938613, -0.287449, 0, 0.11126)
+transform = Transform3D(-0.6785, 0.648388, 0.345298, -0.690882, -0.722967, 0, 0.249639, -0.23856, 0.938493, -0.119009, -0.0280732, 0.11126)
 mesh = SubResource("PlaneMesh_182dp")
 surface_material_override/0 = ExtResource("1_ub0rm")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.904321, 0, -0.426853, 0, 1, 0, 0.426853, 0, 0.904321, 0.196642, 0, 0.12219)
+transform = Transform3D(0.894152, 0.133632, -0.427358, -0.147809, 0.989016, 0, 0.422664, 0.0631675, 0.904082, 0.0632942, 0.0070183, 0.12219)
 mesh = SubResource("PlaneMesh_182dp")
 surface_material_override/0 = ExtResource("1_ub0rm")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.821219, 0, 0.570613, 0, 1, 0, -0.570613, 0, 0.821219, -0.0223724, 0, -0.277629)
+transform = Transform3D(0.679961, 0.460368, 0.570714, -0.560639, 0.82806, 0, -0.472585, -0.319964, 0.821149, -0.0223724, -0.0772014, -0.277629)
 mesh = SubResource("PlaneMesh_182dp")
 surface_material_override/0 = ExtResource("1_ub0rm")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_qckkn")

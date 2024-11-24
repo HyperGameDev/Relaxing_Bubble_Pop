@@ -9,6 +9,7 @@ var float_switch_timer: Timer
 
 var bubbles_left: int = 0
 var bubbles_popped: int = 0
+var bubbles_spawned: int = 0
 
 func _ready() -> void:
 	set_process(true)
@@ -26,10 +27,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
 		get_tree().paused = !get_tree().paused
 
-func on_update_bubbles_left(adjustment):
+func on_update_bubbles_left(adjustment,was_popped):
 	bubbles_left += adjustment
+	bubbles_spawned += adjustment
 	if adjustment < 0:
-		bubbles_popped += abs(adjustment)
+		if was_popped:
+			bubbles_popped += abs(adjustment)
+		else:
+			bubbles_spawned += abs(adjustment)
 		
 	#if OS.has_feature("debug"):
 		#print(bubbles_left)

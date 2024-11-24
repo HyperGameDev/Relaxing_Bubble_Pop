@@ -1,35 +1,36 @@
 [gd_scene load_steps=4 format=3 uid="uid://crem5axttkk1j"]
 
+[ext_resource type="Material" uid="uid://cbqrjjpnstfod" path="res://bubble.tres" id="1_3q1kx"]
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kw1wh"]
 particle_flag_rotate_y = true
-direction = Vector3(0, 1.285, 0)
-spread = 56.146
-initial_velocity_max = 10.73
-damping_max = 1.577
-scale_min = 0.2
-scale_max = 0.7
+emission_shape = 1
+emission_sphere_radius = 1.2
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(1, 0, 1)
+spread = 26.388
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 96.11
+radial_accel_max = 100.0
+damping_min = 49.722
+damping_max = 53.896
 turbulence_noise_strength = 10.73
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iisi2"]
-albedo_color = Color(0.69, 0.855333, 1, 1)
-metallic_specular = 0.0
-disable_receive_shadows = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_m2wim"]
-material = SubResource("StandardMaterial3D_iisi2")
-radius = 0.15
-height = 0.3
-radial_segments = 7
-rings = 4
+[sub_resource type="PlaneMesh" id="PlaneMesh_kt7qh"]
+material = ExtResource("1_3q1kx")
+size = Vector2(0.13, 0.04)
+orientation = 2
 
 [node name="Particles_Pop" type="GPUParticles3D"]
 cast_shadow = 0
 gi_mode = 0
 emitting = false
-amount = 5
-lifetime = 0.15
+amount = 20
+lifetime = 0.2
+interp_to_end = 0.4
 one_shot = true
-explosiveness = 0.81
-randomness = 1.0
+explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_kw1wh")
-draw_pass_1 = SubResource("SphereMesh_m2wim")
+draw_pass_1 = SubResource("PlaneMesh_kt7qh")

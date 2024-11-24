@@ -41,7 +41,7 @@ sky_horizon_color = Color(1, 0.74, 0.904667, 1)
 sky_curve = 0.0652914
 ground_bottom_color = Color(0, 0.0509804, 0.184314, 1)
 ground_horizon_color = Color(0.443137, 0.47451, 0.560784, 1)
-ground_curve = 0.190273
+ground_curve = 0.0485
 sun_angle_max = 15.25
 
 [sub_resource type="Sky" id="Sky_uwauc"]
@@ -50,7 +50,7 @@ sky_material = SubResource("ProceduralSkyMaterial_vprnn")
 [sub_resource type="Environment" id="Environment_7dg58"]
 background_mode = 2
 sky = SubResource("Sky_uwauc")
-sky_custom_fov = 129.9
+sky_custom_fov = 151.1
 tonemap_mode = 2
 tonemap_exposure = 0.63
 tonemap_white = 1.86
@@ -61,9 +61,9 @@ glow_hdr_threshold = 0.46
 glow_hdr_scale = 3.27
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.491839, 0.595022, 0.653753, 1)
+fog_light_color = Color(0.669605, 0.326824, 9.62615e-08, 1)
 fog_light_energy = 1.07
-fog_sun_scatter = 0.1
+fog_sun_scatter = 0.03
 fog_density = 0.4626
 fog_height = 1024.0
 fog_height_density = -11.7041
@@ -81,7 +81,7 @@ size = Vector3(200, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ikken"]
 flip_faces = true
-size = Vector3(200, -0.635, 95.355)
+size = Vector3(200, -0.635, 93.715)
 
 [sub_resource type="Gradient" id="Gradient_w8qet"]
 colors = PackedColorArray(0.790454, 0.182294, 0.214721, 1, 1, 1, 1, 1)
@@ -158,6 +158,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:surface_material_override/0:uv1_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.46, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_c3nr2"]
 resource_name = "water_sway"
@@ -174,6 +210,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1.86607, 0.615573, 1.93187),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.004, 0), Vector3(0, 0.01, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:surface_material_override/0:uv1_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.3, 6),
+"transitions": PackedFloat32Array(1.56917, 1.93187, 1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.005, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.66667),
+"transitions": PackedFloat32Array(1.7411, 1.7411),
+"update": 0,
+"values": [Vector3(0, -0.46, 0), Vector3(0, -0.3, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 0.955)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yn715"]
@@ -238,6 +310,7 @@ size = Vector3(200, 1, 300)
 
 [node name="ZEN" type="Node3D"]
 script = ExtResource("1")
+bubble_spread_divisor = 14.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("2_755hp")
@@ -361,23 +434,27 @@ text = "999999"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, -1.52855e-14, -8.74228e-08, 0, 1, -1.74846e-07, 8.74228e-08, -1.74846e-07, -1, 0, 0, 0)
+transform = Transform3D(-1, -2.6401e-14, -1.50996e-07, 0, 1, -1.74846e-07, 1.50996e-07, -1.74846e-07, -1, 0, 0, 0)
 light_color = Color(0.904108, 0.70477, 0.154493, 1)
 light_energy = 2.188
-light_angular_distance = 10.0
+light_angular_distance = 21.25
 directional_shadow_mode = 0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.979575, 0.201078, 0, -0.201078, -0.979575, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -0.999925, 0.0122169, 0, -0.0122169, -0.999925, 0, 0, 0)
 visible = false
 light_color = Color(0.904108, 0.70477, 0.154493, 1)
-light_energy = 5.117
+light_energy = 5.872
+light_angular_distance = 44.06
+light_cull_mask = 4293918720
 directional_shadow_mode = 0
-sky_mode = 2
+sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7dg58")
 script = ExtResource("3_jcrci")
+ground_horizon_color = Color(0.443137, 0.47451, 0.560784, 1)
+ground_color_curve = 0.1348
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("waterline")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.245, 9.406)
