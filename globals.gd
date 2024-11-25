@@ -7,9 +7,9 @@ var constant_y_float_force: float = 0.0
 var current_float_index: int = 0
 var float_switch_timer: Timer
 
-var bubbles_left: int = 0
+var bubbles_total: int = 0
 var bubbles_popped: int = 0
-var bubbles_spawned: int = 0
+var bubbles_active: int = 0
 
 func _ready() -> void:
 	set_process(true)
@@ -20,24 +20,26 @@ func _ready() -> void:
 	float_switch_timer.connect("timeout", Callable(self, "_on_SwitchTimer_timeout"))
 	add_child(float_switch_timer)
 	float_switch_timer.start()
-	Messenger.update_bubbles_left.connect(on_update_bubbles_left)
+	Messenger.update_bubbles_total.connect(on_update_bubbles_total)
 	Messenger.debug_arrow.connect(on_debug_arrow)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
 		get_tree().paused = !get_tree().paused
 
-func on_update_bubbles_left(adjustment,was_popped):
-	bubbles_left += adjustment
-	bubbles_spawned += adjustment
+func on_update_bubbles_total(adjustment,was_popped):
 	if adjustment < 0:
 		if was_popped:
 			bubbles_popped += abs(adjustment)
 		else:
-			bubbles_spawned += abs(adjustment)
+			bubbles_total += abs(adjustment)
+			
+	bubbles_total += adjustment
+	bubbles_active += adjustment
+	
 		
 	#if OS.has_feature("debug"):
-		#print(bubbles_left)
+		#print(bubbles_total)
 
 func update_float_force_values(float_force_array):
 	float_force_values = float_force_array.duplicate()

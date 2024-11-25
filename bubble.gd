@@ -15,7 +15,7 @@ func _ready()->void :
 	add_to_group("Bubble")
 	body_entered.connect(on_body_entered)
 	Messenger.sees_something.connect(on_sees_something)
-	Messenger.update_bubbles_left.emit(1,true)
+	Messenger.update_bubbles_total.emit(1,true)
 
 func on_sees_something(something):
 	if self == something:
@@ -27,7 +27,7 @@ func on_sees_something(something):
 			await tween.finished
 			$Particles_Pop.emitting = true
 			if !hacky:
-				Messenger.update_bubbles_left.emit(-1,true)
+				Messenger.update_bubbles_total.emit(-1,true)
 				Sound.audio_pop.play()
 			if !at_end:
 				var food = load("res://bubble_food.tscn").instantiate()

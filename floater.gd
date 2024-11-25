@@ -35,7 +35,7 @@ func disappear():
 	shrink_mesh(mesh_2,false)
 	shrink_mesh(mesh_3,false)
 	await shrink_mesh(mesh_1,true).finished
-	Messenger.update_bubbles_left.emit(-1,false)
+	Messenger.update_bubbles_total.emit(-1,false)
 	#tween.kill()
 	queue_free()
 

@@ -63,6 +63,7 @@ linear_damp = 5.435
 script = ExtResource("1")
 bubble_blast = NodePath("Particles_Blast")
 mesh_1 = NodePath("MeshInstance3D")
+floating_speed = 0.6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_iu6uw")

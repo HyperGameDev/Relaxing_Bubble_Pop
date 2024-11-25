@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d2smvqdmp5re7"]
+[gd_scene load_steps=48 format=3 uid="uid://d2smvqdmp5re7"]
 
 [ext_resource type="Script" path="res://zen.gd" id="1"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://hacky_load.gd" id="6_ip3m3"]
 [ext_resource type="PackedScene" uid="uid://bjpd22s3jktcl" path="res://particles_blast.tscn" id="6_ivt3r"]
 [ext_resource type="Texture2D" uid="uid://cpu83s0e8nfl4" path="res://icons/icon_left.png" id="6_x8hj1"]
+[ext_resource type="Texture2D" uid="uid://cn26bsfj3txki" path="res://icons/icon_available.png" id="7_07f5s"]
 [ext_resource type="Texture2D" uid="uid://ddc5dnujlknn" path="res://icons/icon_count.png" id="7_dujlo"]
 [ext_resource type="PackedScene" uid="uid://crem5axttkk1j" path="res://particles_pop.tscn" id="7_ypmkk"]
 [ext_resource type="Texture2D" uid="uid://b7jjarwbrfgq1" path="res://icons/icon_pause.png" id="8_8pyic"]
@@ -22,6 +23,9 @@ blend_mode = 1
 
 [sub_resource type="SystemFont" id="SystemFont_50tpk"]
 font_names = PackedStringArray("Arial Rounded MT")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wci3a"]
+blend_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4v8db"]
 blend_mode = 2
@@ -50,7 +54,7 @@ sky_material = SubResource("ProceduralSkyMaterial_vprnn")
 [sub_resource type="Environment" id="Environment_7dg58"]
 background_mode = 2
 sky = SubResource("Sky_uwauc")
-sky_custom_fov = 151.1
+sky_custom_fov = 159.6
 tonemap_mode = 2
 tonemap_exposure = 0.63
 tonemap_white = 1.86
@@ -340,16 +344,16 @@ layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer"]
+[node name="VBox_Buttons" type="VBoxContainer" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 75
 
-[node name="Control_Dark" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBoxContainer"]
+[node name="Control_Dark" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
-[node name="Touch_Dark" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBoxContainer/Control_Dark"]
+[node name="Touch_Dark" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons/Control_Dark"]
 unique_name_in_owner = true
 position = Vector2(0, -4)
 scale = Vector2(0.09, 0.09)
@@ -357,25 +361,35 @@ texture_normal = ExtResource("5_13033")
 texture_pressed = ExtResource("5_13033")
 action = "Dark"
 
-[node name="Control_Left" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBoxContainer"]
+[node name="Control_Total" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
-[node name="Touch_Left" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBoxContainer/Control_Left"]
+[node name="Touch_Total" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons/Control_Total"]
 unique_name_in_owner = true
 position = Vector2(0, -4)
 scale = Vector2(0.09, 0.09)
 texture_normal = ExtResource("6_x8hj1")
 texture_pressed = ExtResource("6_x8hj1")
-action = "Left"
+action = "Total"
 
-[node name="Control_Count" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBoxContainer"]
+[node name="Control_Active" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
-[node name="Touch_Count" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBoxContainer/Control_Count"]
+[node name="Touch_Active" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons/Control_Active"]
+unique_name_in_owner = true
+position = Vector2(0, -4)
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("7_07f5s")
+texture_pressed = ExtResource("7_07f5s")
+action = "Active"
+
+[node name="Control_Count" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Touch_Count" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons/Control_Count"]
 unique_name_in_owner = true
 position = Vector2(0, -4)
 scale = Vector2(0.09, 0.09)
@@ -383,12 +397,11 @@ texture_normal = ExtResource("7_dujlo")
 texture_pressed = ExtResource("7_dujlo")
 action = "Count"
 
-[node name="Control_Pause" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBoxContainer"]
+[node name="Control_Pause" type="Control" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
-[node name="Touch_Pause" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBoxContainer/Control_Pause"]
+[node name="Touch_Pause" type="TouchScreenButton" parent="UI/Containter_Mobile/VBox_Touch_Menu/MarginContainer/VBox_Buttons/Control_Pause"]
 unique_name_in_owner = true
 process_mode = 3
 position = Vector2(0, -4)
@@ -398,17 +411,19 @@ texture_pressed = ExtResource("8_8pyic")
 action = "Pause"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = -0.013
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -316.0
+anchor_bottom = 0.561
+offset_left = 16.64
+offset_bottom = 0.0799561
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = -51
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 500
+theme_override_constants/separation = 65
 alignment = 1
 
 [node name="Label_Bubbles-popped" type="Label" parent="UI/MarginContainer/HBoxContainer"]
@@ -418,18 +433,30 @@ modulate = Color(1, 1, 1, 0.0627451)
 material = SubResource("CanvasItemMaterial_sboff")
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_50tpk")
-theme_override_font_sizes/font_size = 300
+theme_override_font_sizes/font_size = 105
 text = "999999"
 horizontal_alignment = 1
 
-[node name="Label_Bubbles-left" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+[node name="Label_Bubbles-active" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.0627451)
+material = SubResource("CanvasItemMaterial_wci3a")
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.861667, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_50tpk")
+theme_override_font_sizes/font_size = 105
+text = "999999"
+horizontal_alignment = 1
+
+[node name="Label_Bubbles-total" type="Label" parent="UI/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0.0627451)
 material = SubResource("CanvasItemMaterial_4v8db")
 layout_mode = 2
 theme_override_fonts/font = SubResource("SystemFont_50tpk")
-theme_override_font_sizes/font_size = 300
+theme_override_font_sizes/font_size = 105
 text = "999999"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -437,7 +464,7 @@ unique_name_in_owner = true
 transform = Transform3D(-1, -2.6401e-14, -1.50996e-07, 0, 1, -1.74846e-07, 1.50996e-07, -1.74846e-07, -1, 0, 0, 0)
 light_color = Color(0.904108, 0.70477, 0.154493, 1)
 light_energy = 2.188
-light_angular_distance = 21.25
+light_angular_distance = 33.64
 directional_shadow_mode = 0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
