@@ -24,6 +24,8 @@ script = ExtResource("1_dba6b")
 mesh_1 = NodePath("MeshInstance3D")
 mesh_2 = NodePath("MeshInstance3D2")
 mesh_3 = NodePath("MeshInstance3D3")
+floating_speed = 1.0
+bob_force_values = [0.0, -1.0, -0.5, 0.0]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0549316, -0.00311279, -0.0947876)

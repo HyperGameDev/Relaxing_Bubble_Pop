@@ -17,6 +17,9 @@ func _ready()->void :
 	Messenger.sees_something.connect(on_sees_something)
 	Messenger.update_bubbles_total.emit(1,true)
 
+func _process(delta: float) -> void:
+	pass
+
 func on_sees_something(something):
 	if self == something:
 		if !popped:
