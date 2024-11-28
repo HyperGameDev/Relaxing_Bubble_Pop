@@ -490,6 +490,8 @@ waterline = NodePath("../Waterline")
 
 [node name="Waterline" type="StaticBody3D" parent="." node_paths=PackedStringArray("waterline_preview")]
 transform = Transform3D(1, 0, 0, 0, 0.993373, -0.114937, 0, 0.114937, 0.993373, 0, -10.44, 0)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("3_w60u6")
 waterline_preview = NodePath("MeshInstance3D")
 

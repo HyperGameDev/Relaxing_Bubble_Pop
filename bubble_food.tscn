@@ -4,32 +4,35 @@
 [ext_resource type="Material" uid="uid://b38cafcxgkkgn" path="res://bubble_food_overlay.tres" id="1_ub0rm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3tyyt"]
-bounce = 0.37
+bounce = 0.3
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_357fx"]
-size = Vector3(1, 0.01, 1)
+[sub_resource type="SphereShape3D" id="SphereShape3D_2lbfl"]
+radius = 0.38
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_182dp"]
+lightmap_size_hint = Vector2i(2, 2)
 size = Vector2(0.11, 0.175)
 orientation = 2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qckkn"]
 
 [node name="Bubble_food" type="RigidBody3D" node_paths=PackedStringArray("mesh_1", "mesh_2", "mesh_3")]
+collision_layer = 0
+collision_mask = 0
+axis_lock_angular_x = true
 physics_material_override = SubResource("PhysicsMaterial_3tyyt")
-gravity_scale = -0.3
+gravity_scale = -0.33
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_dba6b")
 mesh_1 = NodePath("MeshInstance3D")
 mesh_2 = NodePath("MeshInstance3D2")
 mesh_3 = NodePath("MeshInstance3D3")
-floating_speed = 1.0
-bob_force_values = [0.0, -1.0, -0.5, 0.0]
+bob_force_values = [-2.0, -3.43, -3.3, -3.0]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0549316, -0.00311279, -0.0947876)
-shape = SubResource("BoxShape3D_357fx")
+shape = SubResource("SphereShape3D_2lbfl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.6785, 0.648388, 0.345298, -0.690882, -0.722967, 0, 0.249639, -0.23856, 0.938493, -0.119009, -0.0280732, 0.11126)

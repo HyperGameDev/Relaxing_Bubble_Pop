@@ -13,12 +13,12 @@ var blasted: bool = false
 
 func _ready()->void :
 	add_to_group("Bubble")
+	set_collision_layer_value(Globals.collision.BUBBLE, true)
+	set_collision_mask_value(Globals.collision.WATERLINE, true)
 	body_entered.connect(on_body_entered)
 	Messenger.sees_something.connect(on_sees_something)
 	Messenger.update_bubbles_total.emit(1,true)
-
-func _process(delta: float) -> void:
-	pass
+	Messenger.bob_state_change.connect(on_bob_state_change)
 
 func on_sees_something(something):
 	if self == something:

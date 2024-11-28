@@ -70,6 +70,12 @@ Active={
 
 pointing/emulate_touch_from_mouse=true
 
+[layer_names]
+
+3d_physics/layer_1="Waterline"
+3d_physics/layer_2="Bubbles"
+3d_physics/layer_3="Food (Bubbles)"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

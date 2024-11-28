@@ -13,10 +13,6 @@ var constant_y_bob_force: float = 0.0
 
 var floating: bool = false
 var at_end: bool = false
-
-
-func _ready() -> void:
-	Messenger.bob_state_change.connect(on_bob_state_change)
 	
 func _physics_process(_delta: float) -> void:
 	if floating:
@@ -29,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 func on_bob_state_change():
 	current_bob_index = (current_bob_index + 1) % bob_force_values.size()
 	constant_y_bob_force = bob_force_values[current_bob_index]
-	print("Floater received bob change")
+	#print(self, " received bob change")
 			
 func apply_bobbing_y_force():
 	var constant_bob_force = Vector3(0, constant_y_bob_force, 0) 

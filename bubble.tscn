@@ -54,6 +54,8 @@ _data = {
 }
 
 [node name="Bubble" type="RigidBody3D" node_paths=PackedStringArray("bubble_blast", "mesh_1")]
+collision_layer = 0
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_jwbxw")
 gravity_scale = -0.95
 can_sleep = false

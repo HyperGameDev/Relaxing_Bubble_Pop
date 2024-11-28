@@ -8,5 +8,7 @@ extends StaticBody3D
 
 func _ready() -> void:
 	add_to_group("Waterline")
+	set_collision_layer_value(Globals.collision.WATERLINE, true)
+	
 	animation_mesh.play("water_sway")
 	waterline_preview.visible = false

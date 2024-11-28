@@ -1,5 +1,11 @@
 extends Node
 
+enum collision {DO_NOT_SET = 0,
+				WATERLINE = 1,
+				BUBBLE = 2,
+				FOOD_BUBBLE =3
+}
+
 @export var bob_switch_interval: float = 0.75 # Interval for each switch (3 seconds loop / 4 switches) 
 var bob_switch_timer: Timer
 

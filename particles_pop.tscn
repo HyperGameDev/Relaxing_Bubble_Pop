@@ -20,7 +20,7 @@ turbulence_noise_strength = 10.73
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kt7qh"]
 material = ExtResource("1_3q1kx")
-size = Vector2(0.13, 0.04)
+size = Vector2(0.13, 0.065)
 orientation = 2
 
 [node name="Particles_Pop" type="GPUParticles3D"]
