@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://b38cafcxgkkgn" path="res://bubble_food_overlay.tres" id="1_ub0rm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3tyyt"]
-bounce = 0.3
+bounce = 0.05
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2lbfl"]
 radius = 0.38
@@ -28,7 +28,7 @@ script = ExtResource("1_dba6b")
 mesh_1 = NodePath("MeshInstance3D")
 mesh_2 = NodePath("MeshInstance3D2")
 mesh_3 = NodePath("MeshInstance3D3")
-bob_force_values = [-2.0, -3.43, -3.3, -3.0]
+bob_force_values = [-2.0, -3.2, -3.1, -3.0]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0549316, -0.00311279, -0.0947876)

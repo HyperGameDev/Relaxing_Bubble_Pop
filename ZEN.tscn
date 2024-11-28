@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://d2smvqdmp5re7"]
+[gd_scene load_steps=49 format=3 uid="uid://d2smvqdmp5re7"]
 
 [ext_resource type="Script" path="res://zen.gd" id="1"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="2"]
@@ -11,12 +11,12 @@
 [ext_resource type="Script" path="res://upperatmos.gd" id="5_03b6p"]
 [ext_resource type="Texture2D" uid="uid://dncwl4t17p2el" path="res://icons/icon_dark.png" id="5_13033"]
 [ext_resource type="Script" path="res://hacky_load.gd" id="6_ip3m3"]
-[ext_resource type="PackedScene" uid="uid://bjpd22s3jktcl" path="res://particles_blast.tscn" id="6_ivt3r"]
 [ext_resource type="Texture2D" uid="uid://cpu83s0e8nfl4" path="res://icons/icon_left.png" id="6_x8hj1"]
 [ext_resource type="Texture2D" uid="uid://cn26bsfj3txki" path="res://icons/icon_available.png" id="7_07f5s"]
 [ext_resource type="Texture2D" uid="uid://ddc5dnujlknn" path="res://icons/icon_count.png" id="7_dujlo"]
 [ext_resource type="PackedScene" uid="uid://crem5axttkk1j" path="res://particles_pop.tscn" id="7_ypmkk"]
 [ext_resource type="Texture2D" uid="uid://b7jjarwbrfgq1" path="res://icons/icon_pause.png" id="8_8pyic"]
+[ext_resource type="Material" uid="uid://b38cafcxgkkgn" path="res://bubble_food_overlay.tres" id="17_uyc62"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sboff"]
 blend_mode = 1
@@ -312,6 +312,11 @@ size = Vector3(200, 1, 300)
 
 [sub_resource type="BoxMesh" id="BoxMesh_31cii"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_bbd0w"]
+lightmap_size_hint = Vector2i(2, 2)
+size = Vector2(0.11, 0.175)
+orientation = 2
+
 [node name="ZEN" type="Node3D"]
 script = ExtResource("1")
 bubble_spread_divisor = 14.0
@@ -552,13 +557,15 @@ mesh = SubResource("BoxMesh_6deaf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -99.0275, -128.586)
 script = ExtResource("6_ip3m3")
 
-[node name="Particles_Blast" parent="HackyLoad" instance=ExtResource("6_ivt3r")]
-
 [node name="Particles_Pop" parent="HackyLoad" instance=ExtResource("7_ypmkk")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HackyLoad"]
 visible = false
 mesh = SubResource("BoxMesh_31cii")
 
-[editable path="HackyLoad/Particles_Blast"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="HackyLoad"]
+transform = Transform3D(-0.6785, 0.648388, 0.345298, -0.690882, -0.722967, 0, 0.249639, -0.23856, 0.938493, -0.119009, -0.0280732, 0.11126)
+mesh = SubResource("PlaneMesh_bbd0w")
+surface_material_override/0 = ExtResource("17_uyc62")
+
 [editable path="HackyLoad/Particles_Pop"]
