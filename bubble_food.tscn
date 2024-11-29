@@ -25,7 +25,6 @@ gravity_scale = -0.33
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_dba6b")
-spawns_fish = false
 mesh_1 = NodePath("MeshInstance3D")
 mesh_2 = NodePath("MeshInstance3D2")
 mesh_3 = NodePath("MeshInstance3D3")
