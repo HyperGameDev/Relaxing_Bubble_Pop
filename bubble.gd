@@ -15,6 +15,7 @@ func _ready()->void :
 	add_to_group("Bubble")
 	set_collision_layer_value(Globals.collision.BUBBLE, true)
 	set_collision_mask_value(Globals.collision.WATERLINE, true)
+	set_collision_mask_value(Globals.collision.BUBBLE, true)
 	body_entered.connect(on_body_entered)
 	Messenger.sees_something.connect(on_sees_something)
 	Messenger.update_bubbles_total.emit(1,true)

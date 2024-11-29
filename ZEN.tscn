@@ -67,7 +67,7 @@ fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.669605, 0.326824, 9.62615e-08, 1)
 fog_light_energy = 1.07
-fog_sun_scatter = 0.03
+fog_sun_scatter = 0.1
 fog_density = 0.4626
 fog_height = 1024.0
 fog_height_density = -11.7041
@@ -466,10 +466,10 @@ text = "999999"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, -2.6401e-14, -1.50996e-07, 0, 1, -1.74846e-07, 1.50996e-07, -1.74846e-07, -1, 0, 0, 0)
-light_color = Color(0.904108, 0.70477, 0.154493, 1)
-light_energy = 2.188
-light_angular_distance = 33.64
+transform = Transform3D(-1, -9.89654e-09, 8.68608e-08, 0, 0.993572, 0.113203, -8.74228e-08, 0.113203, -0.993572, 0, 0, 0)
+light_color = Color(0.852283, 0.661616, 0.124847, 1)
+light_energy = 2.0
+light_angular_distance = 26.64
 directional_shadow_mode = 0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
