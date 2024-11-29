@@ -2,7 +2,7 @@ extends Floater
 
 var food_timer: Timer
 var discoverable_timer: Timer
-@export var spawns_fish: bool = true
+@export var spawns_fish: bool = false
 @export var food_lifetime: float = 10.0
 @export var discoverable_interval: float = 3.0
 @export var sink_speed: float = -6.0
