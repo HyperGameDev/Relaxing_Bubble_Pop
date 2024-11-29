@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqbl8ml0n84of"]
+
+[sub_resource type="GDScript" id="GDScript_okcdi"]
+script/source = "extends RigidBody3D
+
+func _ready() -> void:
+	add_to_group(\"Fish\")
+	set_collision_mask_value(Globals.collision.WATERLINE, true)
+"
+
+[sub_resource type="PrismMesh" id="PrismMesh_hy7oj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wllti"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_xn0oj"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlrvw"]
+size = Vector3(3, 2, 1)
+
+[node name="Fish" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+gravity_scale = -1.0
+script = SubResource("GDScript_okcdi")
+
+[node name="mouth_top" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("PrismMesh_hy7oj")
+
+[node name="mouth_bottom" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -1.5, 0)
+mesh = SubResource("PrismMesh_hy7oj")
+
+[node name="body_mid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04975, -1, 0)
+mesh = SubResource("BoxMesh_wllti")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 2, -1, 0)
+mesh = SubResource("PrismMesh_xn0oj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
+shape = SubResource("BoxShape3D_vlrvw")

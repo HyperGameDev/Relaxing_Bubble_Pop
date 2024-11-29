@@ -1,5 +1,6 @@
 extends Node
 
+var spawn_y_pos: float = -25.0
 enum collision {DO_NOT_SET = 0,
 				WATERLINE = 1,
 				BUBBLE = 2,
